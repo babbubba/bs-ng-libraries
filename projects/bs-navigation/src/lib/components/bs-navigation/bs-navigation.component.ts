@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MenuItem } from './models/menu-item.interface';
-import { BsNavigationService } from './bs-navigation.service';
+import { MenuItem } from '../../models/menu-item.interface';
+import { BsNavigationService } from '../../bs-navigation.service';
 declare const $ : any;
 
 @Component({

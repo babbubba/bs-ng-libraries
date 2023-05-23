@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ConfirmModalComponent, MessageModalComponent, CheckBoxComponent } from '../public-api';
 import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   imports: [
     CommonModule,
     FormsModule,
-    ModalModule.forChild()
+    ModalModule.forChild(),
+    DataTablesModule
   ],
   exports: [
     CheckBoxComponent,

@@ -3,5 +3,6 @@
  */
 
 export * from './lib/bs-navigation.service';
-export * from './lib/bs-navigation.component';
+export * from './lib/components/bs-navigation/bs-navigation.component';
 export * from './lib/bs-navigation.module';
+export * from './lib/models/bs-navigation-config.interface';

@@ -13,37 +13,24 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class CheckBoxComponent implements ControlValueAccessor, OnInit {
-  // form: NgForm;
-  // control!: AbstractControl;
+export class CheckBoxComponent implements ControlValueAccessor {
   value:boolean|undefined;
 
   @Input() label!: string;
   @Input() description!: string;
   @Input() name!: string;
-  // @Input() required!: boolean;
   @Input() wrap: boolean =true;
-  // @Input() value!: any;
-  // disabled: boolean = false;
 
-  constructor() {
-    // this.form = form;
-   }
+  constructor() {}
 
    onChange  = (value: any) => {};
    onTouched  = () => {};
    touched = false;
    disabled = false;
 
-  ngOnInit(): void {
-  }
-
-
-
   writeValue(value: boolean|undefined): void {
     this.value = value;
   }
-
 
   registerOnChange(onChange: any): void {
     this.onChange  = onChange;
@@ -59,7 +46,6 @@ export class CheckBoxComponent implements ControlValueAccessor, OnInit {
       this.touched = true;
     }
   }
-
 
   setDisabledState?(disabled: boolean): void {
     this.disabled = disabled;
