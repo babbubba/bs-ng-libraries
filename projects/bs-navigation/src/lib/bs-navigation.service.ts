@@ -4,7 +4,8 @@ import { BehaviorSubject, Observable, lastValueFrom } from 'rxjs';
 // import { BS_NAVIGATION_CONFIG_SERVICE } from './bs-navigation.module';
 // import { BsNavigationConfig } from "./models/bs-navigation-config.interface";
 import { Menu, MenuItem } from './models/menu-item.interface';
-import { ApiResponseValue, AppConfig, ApplicationService } from 'BsSharedUtils';
+import { ApiResponseValue, AppConfig, ApplicationService, ModalMessagesService } from 'BsSharedUtils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,22 @@ export class BsNavigationService {
   menus$: BehaviorSubject<Menu> = new BehaviorSubject({});
   appConfig!: AppConfig;
 
-  // constructor(@Inject(BS_NAVIGATION_CONFIG_SERVICE) private config: BsNavigationConfig, private http: HttpClient) {
-    constructor(private applicationService: ApplicationService, private http: HttpClient) {
-      this.applicationService.applicationConfig().then(res => this.appConfig = res);
+    constructor(private applicationService: ApplicationService, private http: HttpClient, private mms:ModalMessagesService, private translateService:TranslateService) {
+      this.applicationService.appConfig$.subscribe(res => {
+        if(!res) {
+          this.mms.errorMessage(this.translateService.instant('navigation-service.messages.app-config-invalid'))?.subscribe();
+          return;
+        }
+        this.appConfig = res
+      }
+
+
+     );
   }
 
   private getMenuItems(menuCode: string): Observable<ApiResponseValue<MenuItem[]>> {
     let params = new HttpParams().set('menuCode', menuCode);
-    return this.http.get<ApiResponseValue<MenuItem[]>>(`${this.appConfig.apiEndpointUrl}api/Navigation/menu-items`, { params: params });
+    return this.http.get<ApiResponseValue<MenuItem[]>>(`${this.appConfig.apiEndpointUrl}/api/Navigation/menu-items`, { params: params });
   }
 
   async loadMenu(menuCode: string) {

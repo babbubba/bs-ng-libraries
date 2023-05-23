@@ -1,27 +1,39 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { ConfirmModalComponent, MessageModalComponent, CheckBoxComponent } from '../public-api';
 import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DataTablesModule } from 'angular-datatables';
+import { CheckBoxComponent } from './components/check-box/check-box.component';
+import { MessageModalComponent } from './components/message-modal/message-modal.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrokenPageComponent } from './components/broken-page/broken-page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
     CheckBoxComponent,
     MessageModalComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    BrokenPageComponent
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     ModalModule.forChild(),
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule,
+    RouterModule.forChild([{path: 'shared/broken', component: BrokenPageComponent}])
   ],
   exports: [
     CheckBoxComponent,
     MessageModalComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    BrokenPageComponent
   ]
 })
 export class BsSharedUtilsModule { }

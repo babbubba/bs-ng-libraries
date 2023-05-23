@@ -1,0 +1,13 @@
+{
+  "application-service": {
+    "messages": {
+      "config-file-not-found": "File di configurazione non trovato. Contatta il supporto."
+    }
+  },
+  "navigation-service": {
+    "messages": {
+      "app-config-invalid": "File di configurazione non valido. Contatta il supporto."
+    }
+  }
+
+}

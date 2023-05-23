@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -8,13 +8,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: CheckBoxComponent
+      useExisting: forwardRef(() => CheckBoxComponent),
+      multi: true
     }
   ]
 })
 export class CheckBoxComponent implements ControlValueAccessor {
-  value:boolean|undefined;
+  value?:boolean;
+  touched = false;
+  disabled = false;
 
   @Input() label!: string;
   @Input() description!: string;
@@ -25,10 +27,9 @@ export class CheckBoxComponent implements ControlValueAccessor {
 
    onChange  = (value: any) => {};
    onTouched  = () => {};
-   touched = false;
-   disabled = false;
 
-  writeValue(value: boolean|undefined): void {
+
+  writeValue(value?: boolean): void {
     this.value = value;
   }
 
