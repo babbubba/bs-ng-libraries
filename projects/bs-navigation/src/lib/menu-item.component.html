@@ -1,0 +1,17 @@
+<a *ngIf="!menuItem.subItems || !anyChildIsActive(menuItem)" [routerLink]="menuItem.path" class="nav-link" routerLinkActive="active" [ngClass]="menuItem.cssClass">
+  <i [ngClass]="[menuItem.iconStyle || 'far fa-circle' , 'nav-icon']"></i>
+  <p>
+    {{menuItem.label}}
+  </p>
+</a>
+<a *ngIf="menuItem.subItems && anyChildIsActive(menuItem)" class="nav-link" [ngClass]="{'active' : anyChildIsActive(menuItem)}" [ngClass]="menuItem.cssClass">
+  <i [ngClass]="[menuItem.iconStyle || 'far fa-circle' , 'nav-icon']"></i>
+  <p>
+    {{menuItem.label}}
+    <i class="right fas fa-angle-left"></i>
+  </p>
+</a>
+<ul *ngIf="menuItem.subItems" class="nav nav-treeview" [ngClass]="menuItem.cssClass">
+  <!-- Children -->
+  <li class="nav-item" menu-item [menuItem]="child" *ngFor="let child of menuItem.subItems"></li>
+</ul>

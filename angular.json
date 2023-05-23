@@ -124,6 +124,71 @@
           }
         }
       }
+    },
+    "BsNavigation": {
+      "projectType": "library",
+      "root": "projects/bs-navigation",
+      "sourceRoot": "projects/bs-navigation/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/bs-navigation/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bs-navigation/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bs-navigation/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bs-navigation/src/test.ts",
+            "tsConfig": "projects/bs-navigation/tsconfig.spec.json",
+            "karmaConfig": "projects/bs-navigation/karma.conf.js"
+          }
+        }
+      }
+    },
+    "BsConfiguration": {
+      "projectType": "library",
+      "root": "projects/bs-configuration",
+      "sourceRoot": "projects/bs-configuration/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/bs-configuration/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bs-configuration/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bs-configuration/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bs-configuration/src/test.ts",
+            "tsConfig": "projects/bs-configuration/tsconfig.spec.json",
+            "karmaConfig": "projects/bs-configuration/karma.conf.js"
+          }
+        }
+      }
     }
+  },
+  "cli": {
+    "analytics": "8b473441-42dd-4c60-910d-3a1e2f949b48"
   }
 }

@@ -2,6 +2,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "BsConfiguration": [
+        "dist/bs-configuration"
+      ],
+      "BsNavigation": [
+        "dist/bs-navigation"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
