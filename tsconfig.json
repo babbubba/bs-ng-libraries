@@ -6,8 +6,14 @@
       "BsConfiguration": [
         "dist/bs-configuration"
       ],
+      "BsEasyForm": [
+        "dist/bs-easy-form"
+      ],
       "BsNavigation": [
         "dist/bs-navigation"
+      ],
+      "BsSharedUtils": [
+        "dist/bs-shared-utils"
       ]
     },
     "baseUrl": "./",

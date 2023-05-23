@@ -1,0 +1,49 @@
+<form [formGroup]="formGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+
+    <div class="form-group" *ngFor="let control of formConf?.controls" [ngClass]="control.class??'col-12'">
+      <label
+        *ngIf="['text','password','email','number','search','tel','url', 'textarea', 'select','enum-checkbox', 'group'].includes(control.type)">{{control.label
+        | translate}}</label>
+
+      <!-- Input for common types -->
+      <input *ngIf="['text','password','email','number','search','tel','url'].includes(control.type)"
+        [type]="control.type" [formControlName]="control.name" class="form-control"
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
+
+      <!-- Textarea-->
+      <textarea *ngIf="control.type === 'textarea'" [formControlName]="control.name" class="form-control" rows="4"
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors }"></textarea>
+
+      <!-- Checkbox -->
+      <BsCheckbox *ngIf="control.type === 'checkbox'" [formControlName]="control.name"
+        label="{{control.label | translate}}"
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
+      </BsCheckbox>
+
+      <!-- Enum Checkbox -->
+
+      <select *ngIf="control.type === 'enum-checkbox'" [formControlName]="control.name" class="form-control" multiple>
+        <option [value]="element.id" *ngFor="let element of control.list">{{element.label}}
+        </option>
+      </select>
+
+      <!-- Select -->
+      <select *ngIf="control.type === 'select'" [formControlName]="control.name" class="form-control">
+        <option [value]="element.id" *ngFor="let element of control.list">{{element.label}}
+        </option>
+      </select>
+
+      <!-- Error message -->
+      <div *ngIf="form.submitted && formGroup.get(control.name)?.errors" class="invalid-feedback">
+        <div *ngIf="formGroup.getError('required',control.name)">
+          {{'commons.messages.required-field' | translate}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button class="btn btn-success align-items-end" type="submit">{{'commons.buttons.ok' | translate}}</button>
+    </div>
+  </div>
+</form>
