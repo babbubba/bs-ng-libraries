@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrokenPageComponent } from './components/broken-page/broken-page.component';
 import { RouterModule } from '@angular/router';
+import { BytesPipe } from './pipes/bytes.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     CheckBoxComponent,
     MessageModalComponent,
     ConfirmModalComponent,
-    BrokenPageComponent
+    BrokenPageComponent,
+    BytesPipe
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { RouterModule } from '@angular/router';
     CheckBoxComponent,
     MessageModalComponent,
     ConfirmModalComponent,
-    BrokenPageComponent
+    BrokenPageComponent,
+    BytesPipe
   ]
 })
 export class BsSharedUtilsModule { }

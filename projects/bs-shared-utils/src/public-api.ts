@@ -17,4 +17,6 @@ export * from './lib/models/lists/list-item.interface';
 export * from './lib/models/application/app-config.interface';
 export * from './lib/services/application.service';
 export * from './lib/services/modal-messages.service';
-
+export * from './lib/services/factory.function';
+export * from './lib/pipes/bytes.pipe';
+export * from './lib/directives/click-on-enter-key.directive';
