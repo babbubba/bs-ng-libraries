@@ -1,14 +1,14 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, OperatorFunction, catchError, of, throwError, pipe } from 'rxjs';
+import { Observable, OperatorFunction, catchError, of, throwError, pipe, never } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorsService {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   goToBrokenPage() {
     this.router.navigate(['/shared/broken']);
@@ -23,9 +23,9 @@ export function handleError(error: any): [number, string] {
   let errorMessage: string = '';
   if (error instanceof HttpErrorResponse) {
 
-      console.error(`Error - [Status Code: ${error.status}] ${error.message}`);
-      errorStatus = error.status;
-      errorMessage = error.message;
+    console.error(`Error - [Status Code: ${error.status}] ${error.message}`);
+    errorStatus = error.status;
+    errorMessage = error.message;
   }
   else if (error.error instanceof ErrorEvent) {
     let err = <ErrorEvent>error;
@@ -37,17 +37,23 @@ export function handleError(error: any): [number, string] {
     errorMessage = JSON.stringify(error);
   }
 
-  return [errorStatus,errorMessage];
+  return [errorStatus, errorMessage];
 }
 
-export function pipeError<T>(source: Observable<T>, throwEx: boolean = false):Observable<T> {
+export function pipeError<T>(source: Observable<T>): Observable<T> {
   return source.pipe(
-    catchError((err,caught) => {
+    catchError((err, caught) => {
       let resErr = handleError(err);
-      if(throwEx) {
-        return throwError(() => new Error(resErr[1]));
-      }
-      return caught;
+      return of();
     }
-  ));
+    ));
+}
+
+export function pipeThrowError<T>(source: Observable<T>): Observable<T> {
+  return source.pipe(
+    catchError((err, caught) => {
+      let resErr = handleError(err);
+      return throwError(() => new Error(resErr[1]));
+    }
+    ));
 }
