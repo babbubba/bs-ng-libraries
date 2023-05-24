@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, OperatorFunction, catchError, of, throwError, pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +14,40 @@ export class ErrorsService {
     this.router.navigate(['/shared/broken']);
   }
 
-  handleError(error: any): number {
-    let result: number = 0;
-    if (error instanceof HttpErrorResponse) {
-      if (error.error instanceof ErrorEvent) {
-        console.error(`Event error - ${error}`);
-      } else {
-        console.error(`Error - [Status Code: ${error.status}] ${error.message}`);
-        result = error.status;
-      }
-    } else {
-      console.error(`Unhandled error - ${error}`);
-    }
 
-    return result;
+
+}
+
+export function handleError(error: any): [number, string] {
+  let errorStatus: number = 0;
+  let errorMessage: string = '';
+  if (error instanceof HttpErrorResponse) {
+
+      console.error(`Error - [Status Code: ${error.status}] ${error.message}`);
+      errorStatus = error.status;
+      errorMessage = error.message;
+  }
+  else if (error.error instanceof ErrorEvent) {
+    let err = <ErrorEvent>error;
+    console.error(`Event error - ${err.message}`);
+    errorMessage = err.message;
+  }
+  else {
+    console.error(`Unhandled error - ${error}`);
+    errorMessage = JSON.stringify(error);
   }
 
+  return [errorStatus,errorMessage];
+}
+
+export function pipeError<T>(source: Observable<T>, throwEx: boolean = false):Observable<T> {
+  return source.pipe(
+    catchError((err,caught) => {
+      let resErr = handleError(err);
+      if(throwEx) {
+        return throwError(() => new Error(resErr[1]));
+      }
+      return caught;
+    }
+  ));
 }
