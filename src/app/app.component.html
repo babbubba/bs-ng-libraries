@@ -3,3 +3,8 @@
 
 </BsNavigation>
 <router-outlet></router-outlet>
+
+<BsCheckbox label="etichetta chekbox"  description="Descrizione per questa chek box"></BsCheckbox>
+<BsDynamicForm [formConf]="formConf" (submitted)="submitted($event)" ></BsDynamicForm>
+
+{{vm|json}}

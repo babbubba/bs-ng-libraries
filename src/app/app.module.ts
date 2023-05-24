@@ -8,6 +8,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ApplicationService, BsSharedUtilsModule, HttpLoaderFactory } from 'BsSharedUtils';
 import { BsNavigationModule } from 'BsNavigation';
 import { appConfigFactory, dtConfigFactory } from 'projects/bs-shared-utils/src/lib/services/factory.function';
+import { BsEasyFormModule } from 'BsEasyForm';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { appConfigFactory, dtConfigFactory } from 'projects/bs-shared-utils/src/
       },
       defaultLanguage: 'it'
     }),
-    BsNavigationModule
+    BsNavigationModule,
+    BsEasyFormModule
   ],
   providers: [
     {

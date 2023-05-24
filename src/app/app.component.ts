@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Menu } from 'projects/bs-navigation/src/lib/models/menu-item.interface';
 import { BsNavigationService } from 'projects/bs-navigation/src/public-api';
 import { TestServiceBaseService } from './test-service-base.service';
+import { IDynamicFormConf } from 'BsEasyForm';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,25 @@ import { TestServiceBaseService } from './test-service-base.service';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-  menu:Menu = {};
+  menu: Menu = {};
+  vm:any = {
+    field1: 'Valore di prova'
+  }
+  formConf: IDynamicFormConf = {
+    controls: [
+      {
+        name: 'field1',
+        label: 'Campo 1',
+        value: this.vm.field1,
+        type: 'text',
+        validators: {
+        }
+      }
+    ]
+  };
 
-  constructor(private menuService:BsNavigationService, private tService:TestServiceBaseService) {
+
+  constructor(private menuService: BsNavigationService, private tService: TestServiceBaseService) {
 
   }
   ngOnInit(): void {
@@ -19,11 +37,15 @@ export class AppComponent implements OnInit {
     // this.menuService.menus$.subscribe(r=>this.menu = r);
     // this.menuService.loadMenu('main-sidebar');
     this.tService.getCompanies().subscribe(
-      res=> {
+      res => {
         console.log(res);
       }
     );
   }
 
+
+  submitted(fg: FormGroup) {
+    this.vm = fg.value;
+  }
 
 }
