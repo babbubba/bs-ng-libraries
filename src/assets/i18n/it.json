@@ -8,6 +8,10 @@
     "messages": {
       "app-config-invalid": "File di configurazione non valido. Contatta il supporto."
     }
+  },
+  "commons": {
+    "messages": {
+      "required-field": "Il campo è obbligatorio"
+    }
   }
-
 }

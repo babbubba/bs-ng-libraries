@@ -20,5 +20,7 @@ export * from './lib/services/modal-messages.service';
 export * from './lib/services/service-base.service';
 export * from './lib/services/factory.function';
 export * from './lib/services/errors.service';
+export * from './lib/services/datetime.function';
+export * from './lib/services/jwt.function';
 export * from './lib/pipes/bytes.pipe';
 export * from './lib/directives/click-on-enter-key.directive';

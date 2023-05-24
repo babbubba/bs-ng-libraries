@@ -42,3 +42,8 @@ Used as APP_INITIALIZER provider to load data tables configuration file before b
 
 ### HttpLoaderFactory
 Factory used bu translate service to confgure custo translate loader.
+
+## Date and time functions
+
+### getSecondsToDate 
+Return the seconds (number) to a provided date. If date is undefined it returns the second to current date and time.

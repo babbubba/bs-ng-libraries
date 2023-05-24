@@ -13,7 +13,9 @@ import { FormGroup } from '@angular/forms';
 export class AppComponent implements OnInit {
   menu: Menu = {};
   vm:any = {
-    field1: 'Valore di prova'
+    field1: 'Valore di prova',
+    field2: 'Valore di prova'
+
   }
   formConf: IDynamicFormConf = {
     controls: [
@@ -22,7 +24,18 @@ export class AppComponent implements OnInit {
         label: 'Campo 1',
         value: this.vm.field1,
         type: 'text',
+        class: 'col-md-4',
         validators: {
+        }
+      },
+      {
+        name: 'field2',
+        label: 'Campo 2',
+        value: this.vm.field2,
+        type: 'text',
+        class: 'col-md-4',
+        validators: {
+          required: true
         }
       }
     ]
