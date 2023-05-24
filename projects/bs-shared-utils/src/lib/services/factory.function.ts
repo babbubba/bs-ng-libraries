@@ -1,6 +1,8 @@
 import { Observable, catchError, of, tap } from "rxjs";
 import { AppConfig } from "../models";
 import { ApplicationService } from "./application.service";
+import { HttpBackend, HttpClient } from "@angular/common/http";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 export function appConfigFactory(appService: ApplicationService): () => Observable<AppConfig | never[]> {
   return () => appService.getConfigFile().pipe(
@@ -20,4 +22,9 @@ export function dtConfigFactory(appService: ApplicationService): () => Observabl
       return of([])
     })
   )
+}
+
+export function HttpLoaderFactory(http: HttpBackend) {
+  let client = new HttpClient(http);
+  return new TranslateHttpLoader(client);
 }

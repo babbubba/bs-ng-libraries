@@ -9,8 +9,8 @@ import { AppConfig, Globals } from '../models';
 
 export class ApplicationService {
   httpClient: HttpClient;
-  appConfig$: BehaviorSubject<AppConfig|undefined> = new BehaviorSubject<AppConfig|undefined>(undefined);
-  dtConfig$: BehaviorSubject<DataTables.Settings|undefined> = new BehaviorSubject<DataTables.Settings|undefined>(undefined);
+  appConfig$: BehaviorSubject<AppConfig | undefined> = new BehaviorSubject<AppConfig | undefined>(undefined);
+  dtConfig$: BehaviorSubject<DataTables.Settings | undefined> = new BehaviorSubject<DataTables.Settings | undefined>(undefined);
 
   constructor(
     private handler: HttpBackend) {
@@ -26,3 +26,5 @@ export class ApplicationService {
   }
 
 }
+
+

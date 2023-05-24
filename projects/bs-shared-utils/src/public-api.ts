@@ -17,6 +17,4 @@ export * from './lib/models/lists/list-item.interface';
 export * from './lib/models/application/app-config.interface';
 export * from './lib/services/application.service';
 export * from './lib/services/modal-messages.service';
-export * from './lib/services/errors.function';
-export * from './lib/services/translate.function';
 

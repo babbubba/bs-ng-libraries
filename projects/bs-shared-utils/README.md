@@ -1,24 +1,44 @@
 # BsSharedUtils
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.
+Collection of services, components, pipes, factory classes and helper function usefull in common applications.
 
-## Code scaffolding
+## Services
 
-Run `ng generate component component-name --project BsSharedUtils` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project BsSharedUtils`.
-> Note: Don't forget to add `--project BsSharedUtils` or else it will be added to the default project in your `angular.json` file. 
+### ServiceBase
+This is the base class that all server you will develop must to implements.
+It handle configuration files reading and common settings for all services like authentication facilities.
+This service exposes some usefull methods and properties:
 
-## Build
+#### T(string, Object|undefined = undefined):string
+This method translate the string code passed as parameter using NgxTranslate Module.
 
-Run `ng build BsSharedUtils` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### apiUrl():string
+This property return the api endpoint url (it reads the value from configuration file) with the '/' suffix (if user doesnt type it in the config file value).
 
-## Publishing
+### ApplicationService
+It handles all the base settings for any custom service. You dont need to directly inject this service in your custom service but 
+simply implement your service deriving from ServiceBase.
 
-After building your library with `ng build BsSharedUtils`, go to the dist folder `cd dist/bs-shared-utils` and run `npm publish`.
+### ErrorService
+Usefull to handle errors. 
 
-## Running unit tests
+#### goToBrokenPage
+This route to the Broken Page Component (like 500 errror)
 
-Run `ng test BsSharedUtils` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### handleError
+This handle the error object you provide as parameter. It can handle 'HttpResponseError', 'EventError' and other generic error.
+It writes the debug log on browser and return, in case of 'HttpResponseError' the status code.
 
-## Further help
+### ModalMessageService
+It manages modal message for information, warning and error messages. It owns a method to show and get response (subscription) of a modal confirm message.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Factory functions
+
+### appConfigFactory
+Used as APP_INITIALIZER provider to load application configuration file before bootstrap application.
+
+### dtConfigFactory
+Used as APP_INITIALIZER provider to load data tables configuration file before bootstrap application.
+
+### HttpLoaderFactory
+Factory used bu translate service to confgure custo translate loader.
