@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ApplicationService, ServiceBase, pipeError } from 'BsSharedUtils';
+import { ApiResponseDatatable, ApplicationService, ServiceBase, pipeError } from 'BsSharedUtils';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class TestServiceBaseService extends ServiceBase {
   }
 
   getCompanies() {
-    return this.httpClient.get(this.apiUrl + 'api/companies').pipe(pipeError);
+    return this.httpClient.get<any>(this.apiUrl + 'api/companies').pipe(pipeError);
+  }
+
+  getCompaniesQuery(dtParams:any) {
+    return this.httpClient.post<ApiResponseDatatable<any>>(this.apiUrl + 'api/companies/query', dtParams).pipe(pipeError);
   }
 }

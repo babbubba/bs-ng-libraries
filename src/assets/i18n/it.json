@@ -11,7 +11,9 @@
   },
   "commons": {
     "messages": {
-      "required-field": "Il campo è obbligatorio"
+      "required-field": "Il campo è obbligatorio",
+      "dt-option-not-found": "File di configurazione tabella non trovato",
+      "callback-not-found": "Funzione di callback non trovata"
     }
   }
 }

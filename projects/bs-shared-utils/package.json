@@ -1,5 +1,5 @@
 {
-  "name": "bs-shared-utils",
+  "name": "@babbubba/bs-shared-utils",
   "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
@@ -22,5 +22,9 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accountgit/bs-shared-utils.git"
   }
 }

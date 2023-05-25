@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IDynamicFormConf, IDynamicFormControls } from '../models';
+import { IDynamicFormConf, IDynamicFormControls } from '../../models';
 
 @Component({
   selector: 'BsDynamicForm',

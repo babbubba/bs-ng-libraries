@@ -1,0 +1,34 @@
+{
+  "paging": true,
+  "pagingType": "full_numbers",
+  "pageLength": 10,
+  "searching": false,
+  "serverSide": true,
+  "processing": true,
+  "autoWidth": false,
+  "stateSave": true,
+  "language": {
+    "decimal": ",",
+    "emptyTable": "Nessun dato disponibile",
+    "info": "Da _START_ a _END_ di _TOTAL_ records filtrati",
+    "infoEmpty": "Da 0 a 0 di 0 records",
+    "infoFiltered": "(_MAX_ record totali)",
+    "infoPostFix": "",
+    "thousands": ".",
+    "lengthMenu": "Mostra _MENU_ records",
+    "loadingRecords": "Caricando i dati...",
+    "processing": "Elaborando i dati",
+    "search": "Cerca:",
+    "zeroRecords": "Nessun record trovato",
+    "paginate": {
+      "first": "Primo",
+      "last": "Ultimo",
+      "next": "Prossimo",
+      "previous": "Precedente"
+    },
+    "aria": {
+      "sortAscending": ": attiva ordine crescente",
+      "sortDescending": ": attiva ordine decrescente"
+    }
+  }
+}

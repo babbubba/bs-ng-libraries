@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from 'projects/bs-navigation/src/lib/models/menu-item.interface';
-import { BsNavigationService } from 'projects/bs-navigation/src/public-api';
 import { TestServiceBaseService } from './test-service-base.service';
 import { IDynamicFormConf } from 'BsEasyForm';
 import { FormGroup } from '@angular/forms';
@@ -12,7 +11,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   menu: Menu = {};
-  vm:any = {
+  vm: any = {
     field1: 'Valore di prova',
     field2: 'Valore di prova'
 
@@ -20,45 +19,51 @@ export class AppComponent implements OnInit {
   formConf: IDynamicFormConf = {
     controls: [
       {
-        name: 'field1',
-        label: 'Campo 1',
-        value: this.vm.field1,
-        type: 'text',
-        class: 'col-md-4',
-        validators: {
-        }
+        name: 'field1', label: 'Campo 1', value: this.vm.field1, type: 'text', class: 'col-md-4', validators: {}
       },
       {
-        name: 'field2',
-        label: 'Campo 2',
-        value: this.vm.field2,
-        type: 'text',
-        class: 'col-md-4',
-        validators: {
-          required: true
-        }
+        name: 'field2', label: 'Campo 2', value: this.vm.field2, type: 'text', class: 'col-md-4', validators: { required: true }
       }
     ]
   };
 
+  companies!: any[];
 
-  constructor(private menuService: BsNavigationService, private tService: TestServiceBaseService) {
+  columns = [
+    { data: 'code', name: 'Code' },
+    { data: 'name', name: 'Name' },
+  ];
+
+  order = [[0, 'asc']];
+
+  constructor(private tService: TestServiceBaseService) {
 
   }
   ngOnInit(): void {
 
-    // this.menuService.menus$.subscribe(r=>this.menu = r);
-    // this.menuService.loadMenu('main-sidebar');
-    this.tService.getCompanies().subscribe(
-      res => {
-        console.log(res);
-      }
-    );
   }
-
 
   submitted(fg: FormGroup) {
     this.vm = fg.value;
+  }
+
+  dataCb = (dt: any, cb: any) => {
+    this.tService.getCompaniesQuery(dt).subscribe(res => {
+      if (res.success) {
+        this.companies = res.data;
+      }
+
+      cb({
+        recordsTotal: res.recordsTotal,
+        recordsFiltered: res.recordsFiltered,
+        data: []
+      });
+    });
+  }
+
+
+  edit(companyId: string) {
+
   }
 
 }
