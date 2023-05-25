@@ -1,0 +1,4 @@
+[submodule "projects/bs-shared-utils/bs-shared-utils"]
+	path = projects/bs-shared-utils/bs-shared-utils
+	url = https://github.com/babbubba/bs-shared-utils
+	branch = main
