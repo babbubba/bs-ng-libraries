@@ -1,5 +1,0 @@
-export * from "./modal-confirm.model"
-export * from "./modal-message-button.interface"
-export * from "./modal-message.model"
-export * from "./global/global.model"
-export * from "./application/app-config.interface"
