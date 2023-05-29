@@ -18,7 +18,7 @@ export class BsNavigationComponent implements OnInit {
 
   ngOnInit(): void {
     //this init the treeview plugin for sub menu items (Admin Lte)
-    // $('[data-widget="treeview"]').Treeview('init');
+    $('[data-widget="treeview"]')?.Treeview('init');
 
     this.menuService.menus$.subscribe(r=>this.menuItems = r[this.menuCode]);
     this.menuService.loadMenu('main-sidebar');

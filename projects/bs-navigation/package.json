@@ -1,5 +1,5 @@
 {
-  "name": "bs-navigation",
+  "name": "@babbubba/bs-navigation",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
