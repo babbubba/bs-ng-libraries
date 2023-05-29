@@ -5,10 +5,10 @@ import { AppComponent } from './app.component';
 import { HttpBackend, HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { ApplicationService, BsSharedUtilsModule, HttpLoaderFactory } from 'BsSharedUtils';
 import { BsNavigationModule } from 'BsNavigation';
 import { appConfigFactory, dtConfigFactory } from 'projects/bs-shared-utils/src/lib/services/factory.function';
 import { BsEasyFormModule } from 'BsEasyForm';
+import { BsSharedUtilsModule,HttpLoaderFactory ,ApplicationService} from '@babbubba/bs-shared-utils';
 
 @NgModule({
   declarations: [

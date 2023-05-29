@@ -6,8 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { BsNavigationConfig } from './models/bs-navigation-config.interface';
-import { BsSharedUtilsModule } from 'BsSharedUtils';
-
+import { BsSharedUtilsModule } from '@babbubba/bs-shared-utils';
 
 
 @NgModule({

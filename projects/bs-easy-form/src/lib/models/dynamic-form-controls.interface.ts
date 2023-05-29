@@ -1,4 +1,4 @@
-import { ListItem } from "BsSharedUtils";
+import { ListItem } from "@babbubba/bs-shared-utils";
 import { IDynamicFormControlOptions } from "./dynamic-form-control-options.interface";
 import { IDynamicFormValidators } from "./dynamic-form-validators.interface";
 

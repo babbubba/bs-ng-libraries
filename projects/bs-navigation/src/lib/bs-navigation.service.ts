@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, lastValueFrom } from 'rxjs';
 // import { BS_NAVIGATION_CONFIG_SERVICE } from './bs-navigation.module';
 // import { BsNavigationConfig } from "./models/bs-navigation-config.interface";
 import { Menu, MenuItem } from './models/menu-item.interface';
-import { ApiResponseValue, AppConfig, ApplicationService, ModalMessagesService } from 'BsSharedUtils';
+import { ApiResponseValue, AppConfig, ApplicationService, ModalMessagesService } from '@babbubba/bs-shared-utils';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({

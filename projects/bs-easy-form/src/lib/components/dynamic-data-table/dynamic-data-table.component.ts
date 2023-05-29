@@ -1,6 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ApiResponseDatatable, ApplicationService } from 'BsSharedUtils';
+import { ApplicationService } from '@babbubba/bs-shared-utils';
+
 import { DataTableDirective } from 'angular-datatables';
 import { Observable, Subject, Subscription } from 'rxjs';
 
