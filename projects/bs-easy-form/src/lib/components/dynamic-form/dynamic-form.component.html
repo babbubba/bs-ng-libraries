@@ -3,11 +3,11 @@
 
     <div class="form-group" *ngFor="let control of formConf?.controls" [ngClass]="control.class??'col-12'">
       <label
-        *ngIf="['text','password','email','number','search','tel','url', 'textarea', 'select','enum-checkbox', 'group'].includes(control.type)">{{control.label
+        *ngIf="['text','password','email','number','search','tel','url', 'textarea', 'select','enum-checkbox', 'group','datetime-local','datetime'].includes(control.type)">{{control.label
         | translate}}</label>
 
       <!-- Input for common types -->
-      <input *ngIf="['text','password','email','number','search','tel','url'].includes(control.type)"
+      <input *ngIf="['text','password','email','number','search','tel','url','datetime-local','datetime'].includes(control.type)"
         [type]="control.type" [formControlName]="control.name" class="form-control"
         [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
 
