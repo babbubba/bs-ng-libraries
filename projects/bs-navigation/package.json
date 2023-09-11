@@ -1,11 +1,14 @@
 {
   "name": "@babbubba/bs-navigation",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Simple module to easy implement a navigation menu on Admin Lte theme.",
+  "author": "Fabio Cavallari",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0",
     "@angular/router": "^14.2.0",
-    "@babbubba/bs-shared-utils": "^0.0.2"
+    "@babbubba/bs-shared-utils": "^1.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
