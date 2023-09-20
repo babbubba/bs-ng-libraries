@@ -6,6 +6,7 @@ import { BsSharedUtilsModule } from '@babbubba/bs-shared-utils';
 import { DynamicDataTableComponent } from './components/dynamic-data-table/dynamic-data-table.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { DataTablesModule } from 'angular-datatables';
+import { Select2Module } from 'ng-select2-component';
 
 
 
@@ -20,7 +21,8 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
     TranslateModule.forChild(),
     BsSharedUtilsModule,
-    DataTablesModule
+    DataTablesModule,
+    Select2Module
   ],
   exports: [
     DynamicFormComponent,

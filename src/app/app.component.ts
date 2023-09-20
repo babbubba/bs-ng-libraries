@@ -3,6 +3,7 @@ import { Menu } from 'projects/bs-navigation/src/lib/models/menu-item.interface'
 import { TestServiceBaseService } from './test-service-base.service';
 import { IDynamicFormConf } from 'BsEasyForm';
 import { FormGroup } from '@angular/forms';
+import { ListItem } from 'BsSharedUtils';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,24 @@ export class AppComponent implements OnInit {
   menu: Menu = {};
   vm: any = {
     field1: 'Valore di prova',
-    field2: 'Valore di prova'
-
+    field2: 'Valore di prova',
+    field3: 'id1'
   }
+
+  select2DataOptions:ListItem[] = [
+    <ListItem>{
+      id: 'id1',
+      label: 'ID 1'
+    },
+    <ListItem>{
+      id: 'id2',
+      label: 'ID 2'
+    },
+    <ListItem>{
+      id: 'id3',
+      label: 'ID 3'
+    }
+  ];
   formConf: IDynamicFormConf = {
     controls: [
       {
@@ -23,6 +39,9 @@ export class AppComponent implements OnInit {
       },
       {
         name: 'field2', label: 'Campo 2', value: this.vm.field2, type: 'text', class: 'col-md-4', validators: { required: true }
+      },
+      {
+        name: 'field3', label: 'Campo 3', value: this.vm.field3, type: 'select2multi', class: 'col-md-4', list:this.select2DataOptions, validators: { required: true }
       }
     ]
   };
