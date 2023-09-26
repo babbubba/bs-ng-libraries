@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDynamicFormConf, IDynamicFormControls } from '../../models';
 import { ListItem } from '@babbubba/bs-shared-utils';
-import { Select2Option } from 'ng-select2-component';
 
 @Component({
   selector: 'BsDynamicForm',
@@ -21,14 +20,6 @@ export class DynamicFormComponent implements OnChanges {
     if (changes['formConf'] && this.formConf) {
       this.createForm(this.formConf.controls)
     }
-  }
-
-
-  toSelect2Data(data: ListItem[] | undefined):Select2Option[] {
-    if(data) {
-      return data.map((m)=> <Select2Option>{value: m.id, label: m.label,id: m.id, disabled: !m.isEnabled  });
-    }
-    return [];
   }
 
   createForm(controls: IDynamicFormControls[]) {

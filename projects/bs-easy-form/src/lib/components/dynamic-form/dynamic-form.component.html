@@ -3,7 +3,7 @@
 
     <div class="form-group" *ngFor="let control of formConf?.controls" [ngClass]="control.class??'col-12'">
       <label
-        *ngIf="['text','password','email','number','search','tel','url', 'textarea', 'select', 'select2multi','enum-checkbox', 'group','datetime-local','datetime'].includes(control.type)">{{control.label
+        *ngIf="['text','password','email','number','search','tel','url', 'textarea', 'select', 'select2multi','enum-checkbox', 'datetime-local','datetime'].includes(control.type)">{{control.label
         | translate}}</label>
 
       <!-- Input for common types -->
@@ -36,12 +36,9 @@
       </select>
 
       <!-- Select 2 Multi-->
-      <select2 *ngIf="control.type === 'select2multi'" [overlay]="false" [data]="toSelect2Data(control.list)" multiple="true" [formControlName]="control.name" class="form-control"> </select2>
-
-      <!-- <select *ngIf="control.type === 'select2multi'" [formControlName]="control.name" class="form-control">
-        <option [value]="element.id" *ngFor="let element of control.list">{{element.label}}
-        </option>
-      </select> -->
+      <ng-select *ngIf="control.type === 'select2multi' && control.list" [items]="control.list" bindLabel="label" bindValue="id" [formControlName]="control.name"
+      [multiple]="true">
+      </ng-select>
 
       <!-- Error message -->
       <div *ngIf="form.submitted && formGroup.get(control.name)?.errors" class="invalid-feedback">

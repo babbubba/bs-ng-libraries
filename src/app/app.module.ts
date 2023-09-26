@@ -8,7 +8,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BsNavigationModule } from 'BsNavigation';
 import { BsEasyFormModule } from 'BsEasyForm';
 import { BsSharedUtilsModule, HttpLoaderFactory,ApplicationService,appConfigFactory, dtConfigFactory } from 'BsSharedUtils';
-import { Select2Module } from 'ng-select2-component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { Select2Module } from 'ng-select2-component';
     }),
     BsNavigationModule,
     BsEasyFormModule,
-    Select2Module
+    NgSelectModule
   ],
   providers: [
     {

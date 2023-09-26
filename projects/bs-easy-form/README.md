@@ -1,24 +1,63 @@
 # BsEasyForm
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.
+It helps building forms with bootstrap style.
 
-## Code scaffolding
+## Supported form element
 
-Run `ng generate component component-name --project BsEasyForm` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project BsEasyForm`.
-> Note: Don't forget to add `--project BsEasyForm` or else it will be added to the default project in your `angular.json` file. 
+### Input element
 
-## Build
+'text','password','email','number','search','tel','url','datetime-local','datetime'
 
-Run `ng build BsEasyForm` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Textarea
 
-## Publishing
+'textarea'
 
-After building your library with `ng build BsEasyForm`, go to the dist folder `cd dist/bs-easy-form` and run `npm publish`.
+### Checkbox
 
-## Running unit tests
+'checkbox'
 
-Run `ng test BsEasyForm` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Select element
 
-## Further help
+ 'select', 'select2multi','enum-checkbox',
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Select2
+
+select2multi
+
+N.B.: To get correct style import the css file: "node_modules/@ng-select/ng-select/themes/default.theme.css" in the "styles" section of your angular.json.
+
+N.B.2: To get select2 working import the module "NgSelectModule" in your module file.
+
+## Example
+
+This is a simple configuration for the form building.
+
+It will generate two input type 'text' with required validation.
+
+```json
+this.formConf = {
+              controls: [
+              {
+                name: 'code',
+                label: 'Codice',
+                class: 'col-md-3',
+                value: this.model?.code,
+                type: 'text',
+                validators: {
+                  required: true
+                }
+              },
+              {
+                name: 'name',
+                label: 'Nome',
+                class: 'col-md-3',
+                value: this.model?.name,
+                type: 'text',
+                validators: {
+                  required: true
+                }
+              }
+            ]
+}
+```
+

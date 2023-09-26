@@ -15,21 +15,24 @@ export class AppComponent implements OnInit {
   vm: any = {
     field1: 'Valore di prova',
     field2: 'Valore di prova',
-    field3: 'id1'
+    field3: ['id1']
   }
 
   select2DataOptions:ListItem[] = [
     <ListItem>{
       id: 'id1',
-      label: 'ID 1'
+      label: 'ID 1',
+      isEnabled: true
     },
     <ListItem>{
       id: 'id2',
-      label: 'ID 2'
+      label: 'ID 2',
+      isEnabled: true
     },
     <ListItem>{
       id: 'id3',
-      label: 'ID 3'
+      label: 'ID 3',
+      isEnabled: true
     }
   ];
   formConf: IDynamicFormConf = {
