@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ApiResponseDatatable, ApplicationService, ServiceBase, pipeError } from '@babbubba/bs-shared-utils';
+import { ApiResponseDatatable, ApplicationService, ServiceBase, pipeError } from 'BsSharedUtils';
 
 @Injectable({
   providedIn: 'root'

@@ -9,4 +9,4 @@ export * from './lib/models/dynamic-form-conf.interface';
 export * from './lib/models/dynamic-form-control-options.interface';
 export * from './lib/models/dynamic-form-controls.interface';
 export * from './lib/models/dynamic-form-validators.interface';
-
+export * from './lib/models/form-submit.interface';

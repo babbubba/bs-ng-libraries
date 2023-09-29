@@ -2,15 +2,20 @@
   <div class="row">
 
     <div class="form-group" *ngFor="let control of formConf?.controls" [ngClass]="control.class??'col-12'">
-      <label
-        *ngIf="['text','password','email','number','search','tel','url', 'textarea', 'select', 'select2multi','enum-checkbox', 'datetime-local','datetime'].includes(control.type)">{{control.label
-        | translate}}</label>
+      <label *ngIf="labeledTypes.includes(control.type)">{{control.label | translate}}</label>
 
       <!-- Input for common types -->
       <input
-        *ngIf="['text','password','email','number','search','tel','url','datetime-local','datetime'].includes(control.type)"
+        *ngIf="['text','password','email','number','search','tel','url','datetime-local', 'date', 'month','week','time'].includes(control.type)"
         [type]="control.type" [formControlName]="control.name" class="form-control"
         [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
+
+      <!-- Input for common Date and or DateTime types -->
+<!--
+        <input
+        *ngIf="['datetime-local', 'date', 'month','week','time'].includes(control.type)"
+        [type]="control.type" [formControlName]="control.name" class="form-control"
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}"> -->
 
       <!-- Textarea-->
       <textarea *ngIf="control.type === 'textarea'" [formControlName]="control.name" class="form-control" rows="4"
@@ -35,9 +40,14 @@
         </option>
       </select>
 
+      <!-- Select 2 -->
+      <ng-select *ngIf="control.type === 'select2'" [items]="control.list ?? null" bindLabel="label" bindValue="id"
+        [formControlName]="control.name">
+      </ng-select>
+
       <!-- Select 2 Multi-->
-      <ng-select *ngIf="control.type === 'select2multi' && control.list" [items]="control.list" bindLabel="label" bindValue="id" [formControlName]="control.name"
-      [multiple]="true">
+      <ng-select *ngIf="control.type === 'select2multi'" [items]="control.list ?? null" bindLabel="label" bindValue="id"
+        [formControlName]="control.name" [multiple]="true">
       </ng-select>
 
       <!-- Error message -->

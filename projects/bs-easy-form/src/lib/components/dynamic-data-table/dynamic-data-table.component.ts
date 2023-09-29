@@ -5,6 +5,14 @@ import { ApplicationService } from '@babbubba/bs-shared-utils';
 import { DataTableDirective } from 'angular-datatables';
 import { Observable, Subject, Subscription } from 'rxjs';
 
+export interface DatTableCb {
+    draw?: number | undefined;
+    recordsTotal?: number | undefined;
+    recordsFiltered?: number | undefined;
+    data: any;
+    error?: string | undefined;
+}
+
 @Component({
   selector: 'BsDynamicDataTable',
   templateUrl: './dynamic-data-table.component.html',
