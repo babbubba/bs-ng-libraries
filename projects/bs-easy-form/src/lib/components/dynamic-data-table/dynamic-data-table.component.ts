@@ -6,11 +6,11 @@ import { DataTableDirective } from 'angular-datatables';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 export interface DatTableCb {
-    draw?: number | undefined;
-    recordsTotal?: number | undefined;
-    recordsFiltered?: number | undefined;
-    data: any;
-    error?: string | undefined;
+  draw?: number | undefined;
+  recordsTotal?: number | undefined;
+  recordsFiltered?: number | undefined;
+  data: any;
+  error?: string | undefined;
 }
 
 @Component({
@@ -23,18 +23,18 @@ export class DynamicDataTableComponent implements OnInit, OnDestroy, AfterViewIn
   @ViewChild(DataTableDirective, { static: false }) dtElement!: DataTableDirective;
   dtOptions!: DataTables.Settings;
   dtTrigger: Subject<any> = new Subject();
-  @Input()requestReload$?: Observable<boolean>;
+  @Input() requestReload$?: Observable<boolean>;
   requestReloadSubscription?: Subscription;
-  @Input() items?:any[];
+  @Input() items?: any[];
   @Input() columns?: DataTables.ColumnSettings[];
   @Input() orders: Array<(number | string)> | Array<Array<(number | string)>> | undefined;
-  @Input() dataCb!: (dtp: any, cb: any)=>void;
+  @Input() dataCb!: (dtp: any, cb: any) => void;
 
-  constructor(private appService: ApplicationService, private translateService:TranslateService) { }
+  constructor(private appService: ApplicationService, private translateService: TranslateService) { }
 
   ngOnInit(): void {
     this.appService.dtConfig$.subscribe(
-      res => {
+      (res: any) => {
         if (res) {
           this.dtOptions = res;
           this.dtOptions.columns = this.columns;
