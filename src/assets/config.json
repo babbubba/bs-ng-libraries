@@ -3,5 +3,6 @@
   "apiTimeoutSeconds": 15,
   "logoUrl": "assets/img/logo.png",
   "appTitle": "TodoSales",
-  "dataTableLanguageUrl": "//cdn.datatables.net/plug-ins/1.12.1/i18n/"
+  "dataTableLanguageUrl": "//cdn.datatables.net/plug-ins/1.12.1/i18n/",
+  "recaptchaSiteKey": "1234"
 }

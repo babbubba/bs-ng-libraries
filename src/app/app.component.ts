@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from 'projects/bs-navigation/src/lib/models/menu-item.interface';
-import { TestServiceBaseService } from './test-service-base.service';
-import { IDynamicFormConf } from 'BsEasyForm';
 import { FormGroup } from '@angular/forms';
-import { ListItem } from 'BsSharedUtils';
+import { ApiResponseDatatable, ILoginDto, ListItem } from 'BsSharedUtils';
+import { IDynamicFormConf } from 'projects/bs-easy-form/src/public-api';
+import { of } from 'rxjs';
+import { AuthenticationService } from 'projects/bs-shared-utils/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,15 @@ import { ListItem } from 'BsSharedUtils';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
+
+/**
+ *
+ */
+constructor(private autService: AuthenticationService) {
+  this.autService.login2(<ILoginDto>{}).subscribe();
+
+}
+
   menu: Menu = {};
   vm: any = {
     field1: 'Valore di prova',
@@ -87,9 +97,7 @@ export class AppComponent implements OnInit {
 
   order = [[0, 'asc']];
 
-  constructor(private tService: TestServiceBaseService) {
 
-  }
   ngOnInit(): void {
 
   }
@@ -99,7 +107,15 @@ export class AppComponent implements OnInit {
   }
 
   dataCb = (dt: any, cb: any) => {
-    this.tService.getCompaniesQuery(dt).subscribe(res => {
+
+    const fakeResult: ApiResponseDatatable<any[]> = <ApiResponseDatatable<any[]>>{
+      success:true,
+      data: <any[]>[],
+      recordsTotal: 17,
+      recordsFiltered: 16
+    };
+
+    of(fakeResult).subscribe(res => {
       if (res.success) {
         this.companies = res.data;
       }

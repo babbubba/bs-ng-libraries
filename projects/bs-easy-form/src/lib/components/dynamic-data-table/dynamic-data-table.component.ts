@@ -36,7 +36,7 @@ export class DynamicDataTableComponent implements OnInit, OnDestroy, AfterViewIn
     this.appService.dtConfig$.subscribe(
       (res: any) => {
         if (res) {
-          this.dtOptions = res;
+          this.dtOptions = {...res};
           this.dtOptions.columns = this.columns;
           this.dtOptions.order = this.orders;
           this.dtOptions.ajax = this.dataCb;

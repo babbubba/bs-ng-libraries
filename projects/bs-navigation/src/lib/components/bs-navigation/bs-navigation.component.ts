@@ -13,7 +13,11 @@ export class BsNavigationComponent implements OnInit {
 
   @Input() menuCode!: string;
 
-  menuItems: MenuItem[] = [];
+  private menuItems: MenuItem[] = [];
+
+  get items() : MenuItem[] {
+    return this.menuItems.sort((a, b) => a.position - b.position);
+  }
   constructor(private menuService: BsNavigationService) { }
 
   ngOnInit(): void {
