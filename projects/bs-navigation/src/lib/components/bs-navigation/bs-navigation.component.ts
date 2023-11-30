@@ -16,6 +16,7 @@ export class BsNavigationComponent implements OnInit {
   private menuItems: MenuItem[] = [];
 
   get items() : MenuItem[] {
+    if(!this.menuItems) return [];
     return this.menuItems.sort((a, b) => a.position - b.position);
   }
   constructor(private menuService: BsNavigationService) { }
