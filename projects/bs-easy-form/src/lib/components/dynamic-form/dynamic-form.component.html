@@ -8,46 +8,43 @@
       <input
         *ngIf="['text','password','email','number','search','tel','url','datetime-local', 'date', 'month','week','time'].includes(control.type)"
         [type]="control.type" [formControlName]="control.name" class="form-control"
-        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
-
-      <!-- Input for common Date and or DateTime types -->
-<!--
-        <input
-        *ngIf="['datetime-local', 'date', 'month','week','time'].includes(control.type)"
-        [type]="control.type" [formControlName]="control.name" class="form-control"
-        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}"> -->
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}" [readonly]="control.readonly ?? false">
 
       <!-- Textarea-->
       <textarea *ngIf="control.type === 'textarea'" [formControlName]="control.name" class="form-control" rows="4"
-        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors }"></textarea>
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors }" [readonly]="control.readonly ?? false"></textarea>
 
       <!-- Checkbox -->
       <BsCheckbox *ngIf="control.type === 'checkbox'" [formControlName]="control.name"
         label="{{control.label | translate}}"
-        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}" [readonly]="control.readonly ?? false">
       </BsCheckbox>
 
       <!-- Enum Checkbox -->
 
-      <select *ngIf="control.type === 'enum-checkbox'" [formControlName]="control.name" class="form-control" multiple>
+      <select *ngIf="control.type === 'enum-checkbox'" [formControlName]="control.name" class="form-control" multiple
+      [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
         <option [value]="element.id" *ngFor="let element of control.list">{{element.label}}
         </option>
       </select>
 
       <!-- Select -->
-      <select *ngIf="control.type === 'select'" [formControlName]="control.name" class="form-control">
+      <select *ngIf="control.type === 'select'" [formControlName]="control.name" class="form-control"
+      [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}" [disabled]="control.readonly ?? false">
         <option [value]="element.id" *ngFor="let element of control.list">{{element.label}}
         </option>
       </select>
 
       <!-- Select 2 -->
       <ng-select *ngIf="control.type === 'select2'" [items]="control.list ?? null" bindLabel="label" bindValue="id"
-        [formControlName]="control.name">
+        [formControlName]="control.name" [readonly]="control.readonly ?? false"
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
       </ng-select>
 
       <!-- Select 2 Multi-->
       <ng-select *ngIf="control.type === 'select2multi'" [items]="control.list ?? null" bindLabel="label" bindValue="id"
-        [formControlName]="control.name" [multiple]="true">
+        [formControlName]="control.name" [multiple]="true" [readonly]="control.readonly ?? false"
+        [ngClass]="{ 'is-invalid': form.submitted && formGroup.get(control.name)?.errors}">
       </ng-select>
 
       <!-- Error message -->

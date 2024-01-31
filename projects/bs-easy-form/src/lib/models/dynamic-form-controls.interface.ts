@@ -24,4 +24,5 @@ export interface IDynamicFormControls {
    */
   list?:ListItem[];
   children?: IDynamicFormControls[];
+  readonly?:boolean;
 }
